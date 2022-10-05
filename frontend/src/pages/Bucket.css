@@ -1,0 +1,237 @@
+.UpperProcessContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.ProccessContainer {
+  display: flex;
+
+  justify-content: center;
+  align-items: center;
+  width: 450px;
+  height: 100px;
+  margin-top: 40px;
+}
+.Menu {
+  width: 40px;
+  height: 40px;
+  color: white;
+  background-color: #e4002b;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 10px;
+}
+.hr1Color {
+  width: 150px;
+  border: 1px solid #e4002b;
+  margin-right: 5px;
+}
+
+.Bucket {
+  width: 40px;
+  height: 40px;
+  color: white;
+  background-color: #e4002b;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 5px;
+  margin-left: 5px;
+}
+.hr2Color {
+  width: 170px;
+  border: 1px solid rgb(94, 1, 1);
+}
+.checkout {
+  width: 40px;
+  height: 40px;
+  color: rgb(200, 200, 200);
+  background-color: rgb(101, 9, 9);
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 20px;
+  margin-left: 10px;
+}
+.ProcessStatus {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  align-items: center;
+  width: 300px;
+}
+.ProcessStatus h4 {
+  margin: 0 77px;
+}
+.bucketHeading{
+margin-left: 10px;
+}
+/* ---------------------LOWER SECTION ------------------------- */
+
+.bucketLowerContainer {
+  max-width: 1500px;
+  min-height: 700px;
+  margin-top: 30px;
+ 
+
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.itemsContainer {
+  width: 700px;
+  height: auto;
+
+  color: white;
+  margin: 10px 20px;
+  border-radius: 12px;
+}
+.product {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 8px;
+  gap: 35px;
+}
+.productDetail {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-right: 20px;
+  margin-bottom: 10px;
+  background-color: #1c1816;
+  border-radius: 12px;
+  padding: 0px 15px;
+}
+
+.productImg {
+  width: 90px;
+  height: 90px;
+  margin-bottom: 20px;
+  margin-left: 20px;
+}
+.productPriceQuantity h4 span {
+  cursor: pointer;
+  margin: 2px;
+  font-size: 14px;
+}
+
+.rightContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+.proceedToCheckout {
+  width: 318px;
+  height: 320px;
+  background-color: #1c1816;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: flex-start;
+  margin: 10px;
+  padding: 20px;
+  border: none;
+  border-radius: 15px;
+}
+
+.textArea {
+  width: 100%;
+  padding: 1px;
+  margin-bottom: 30px;
+  border-radius: 8px 8px 0 0;
+  border: none;
+  border-bottom: 1px solid white;
+  background-color: #343434;
+  color: white;
+  font-size: 14px;
+}
+.textArea:focus {
+  border: none;
+  outline: none;
+  border-bottom: 1px solid #e4002b;
+}
+.checkBox {
+  display: block;
+  width: 250px;
+  margin-top: -25px;
+}
+
+.DoneButton {
+  width: 100%;
+  padding: 10px 15px;
+  color: white;
+  background-color: rgb(51, 46, 46);
+  border: 2px solid #ffffff;
+  margin-bottom: 16px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.checkoutButton {
+  height: 34px;
+  width: 320px;
+  display: flex;
+  padding: 20px 0px;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  border-radius: 8px;
+  background-color: #e4002b;
+  color: white;
+
+  text-decoration: none;
+  font-size: 12px;
+  text-align: center;
+  cursor: pointer;
+  position: relative;
+  right: 40px;
+}
+.listConditionButton {
+  text-decoration: none;
+  list-style-type: none;
+  color: white;
+  font-size: 12px;
+}
+.proceedLink {
+  text-decoration: none;
+  list-style-type: none;
+  color: white;
+  background-color: #e4002b;
+  font-size: 12px;
+}
+
+.summary {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 315px;
+  margin-left: 10px;
+  margin-top: 10px;
+  background-color: #1c1816;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 15px;
+}
+
+.UDicons {
+  font-size: 14px;
+  cursor: pointer;
+  color: #e4002b;
+  transition: transform 0.7s;
+  margin: 0 2px;
+}
+.UDicons:hover {
+  transform: scale(1.4);
+}

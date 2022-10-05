@@ -1,0 +1,27 @@
+.browseCategories {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin: 55px 0px 33px;
+}
+.line {
+  width: 1100px;
+  margin-left: 20px;
+  color: #3f3f3f;
+}
+hr {
+  color: #3f3f3f;
+}
+
+.Categories {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  justify-content: center;
+  align-items: center;
+}
+
+.link{
+  text-decoration: none;
+}

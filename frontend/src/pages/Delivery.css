@@ -1,0 +1,174 @@
+.deliveryContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.UpperProcessContainerBar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.ProccessContainerBar {
+  display: flex;
+
+  justify-content: center;
+  align-items: center;
+  width: 450px;
+  height: 100px;
+  margin-top: 40px;
+}
+.MenuDelivery {
+  width: 40px;
+  height: 40px;
+  color: white;
+  background-color: #e4002b;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 10px;
+}
+.hr1ColorBar {
+  width: 150px;
+  border: 1px solid #e4002b;
+  margin-right: 5px;
+}
+
+.Bucket {
+  width: 40px;
+  height: 40px;
+  color: white;
+  background-color: #e4002b;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 5px;
+  margin-left: 5px;
+}
+.hr2ColorBar {
+  width: 170px;
+  border: 1px solid #e4002b;
+}
+.checkoutBar {
+  width: 40px;
+  height: 40px;
+  color: rgb(200, 200, 200);
+  background-color: #e4002b;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 20px;
+  margin-left: 10px;
+}
+.ProcessStatus {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  align-items: center;
+  width: 300px;
+}
+.ProcessStatus h4 {
+  margin: 0 77px;
+}
+
+/* order Summary from here */
+
+.SummaryContainer {
+  margin-top: 20px;
+  width: 800px;
+  height: auto;
+  background-color: #1c1816;
+  border-radius: 12px;
+  padding: 10px;
+}
+.SummaryContainer h1 {
+  text-align: center;
+  color: #e4002b;
+}
+
+.productSingleDetail {
+  height: 60px;
+  border-top: 1px solid #0e0e0e;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin: 15px;
+}
+
+
+
+.productDeliverImg {
+  height: 50px;
+  width: 50px;
+  margin: 15px;
+}
+
+.productPriceQuantityDetails {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin-right: 10px;
+}
+
+
+
+.DecisionButtons{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+
+}
+
+.BackButton{
+    height: 50px;
+    color: #fff;
+    
+    border-radius: 8px;
+    padding: 6px 18px;
+    width: 100%;
+    border: none;
+    font-size: 14px;
+    font-weight: bold;
+    background-color: black;
+    border: 1px solid black;
+    border-color: #fff;
+    cursor: pointer;
+}
+.BackButton:hover{
+    background-color: rgb(30, 30, 30);
+}
+
+.ConfirmButton{
+    height: 50px;
+    color: #fff;
+    background-color: #e4002b;
+    border-radius: 8px;
+    padding: 6px 18px;
+    width: 100%;
+    border: none;
+    font-size: 14px;
+    font-weight: bold;
+    position: relative;
+    transition-duration: 1s;
+    cursor: pointer;
+
+    transition : all .3s;
+}
+
+.ConfirmButton:hover{
+  box-shadow:0px 5px 5px -11px  ;
+  transform: scale(1.03);
+
+}
+.ConfirmButton:active{
+  transform: scale(0.98);
+}

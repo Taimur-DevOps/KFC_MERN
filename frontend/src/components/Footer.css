@@ -1,0 +1,73 @@
+
+.container{
+    background-color: #1c1816;
+    max-width: 1600px;
+    height: 383px;
+    box-sizing: border-box;
+    margin-top: 100px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    padding-top: 70px;
+    padding-bottom: 70px;
+}
+
+.upperFooter{
+    display: flex;
+    gap: 20px;
+    font-size: 16px;
+    align-items: center;
+    margin-bottom: 50px;
+    margin-top: 50px;
+ 
+    
+}
+.upperFooter a{
+    text-decoration: none;
+    color: white;
+   
+}
+.upperFooter hr{
+    height: 35px;
+}
+
+.lowerFooter{
+    display: flex;
+    gap: 200px;
+
+   
+}
+.lowerFooter a{
+    text-decoration: none;
+    color: white;
+    font-size: 14px;
+    font-weight: 300;
+   
+    
+}
+.lowerFooter a:hover{
+    text-decoration: underline;}
+.info{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    line-height: 50%;
+}
+
+.iconDiv{
+    width: 40px;
+    height: 40px;
+    background-color: white;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.playStore{
+    display: flex;
+    flex-direction: column;
+    
+}

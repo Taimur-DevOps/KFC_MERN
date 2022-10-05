@@ -1,0 +1,16 @@
+//(dependencies used in this project) 
+
+
+npm i express
+
+npm i morgan (http request logger)
+
+npm i colors (for consoles colors)
+
+npm i mongoose (object modeling tool to work in aysnc env)
+
+npm i dotenv (to store confidential data)
+
+npm i nodemon
+
+npm i concurrently (one command to start two servers)

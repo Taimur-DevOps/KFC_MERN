@@ -1,0 +1,175 @@
+.bodyContainer {
+    max-width: 2600px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  
+    background-image: url("../assets/bgLogin.png");
+    height: 700px;
+    margin-bottom: -100px;
+  }
+  
+  .loginContainerBox {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  
+    max-width: 950px;
+    height: 620px;
+    margin: 100px 0px;
+  
+    background-color: #1c1816;
+  }
+  
+  .leftSide {
+    height: 100%;
+    width: 100%;
+  
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  
+  .rightSide {
+    height: 100%;
+    width: 100%;
+  
+    display: flex;
+    justify-content: flex-start;
+    align-items:flex-start;
+  }
+  
+  .formSide{
+      display: flex;
+      justify-content: space-evenly;
+      flex-direction: column;
+      align-items: flex-start;
+  }
+  
+  
+  
+  .welcome{
+      font-size: 30px;
+      margin-top: 50px;
+  }
+  
+  .textField{
+      width: 300px;
+      padding: 20px;
+      margin-bottom: 30px;
+      border-radius: 8px 8px 0 0;
+      border:none;
+      border-bottom: 1px solid white;
+      background-color: #343434 ;
+      color: white;
+  }
+  
+    
+  
+    .textField:focus{
+      border: none;
+      outline: none;
+      border-bottom: 2px solid  #e4002b;
+    }
+  
+  
+  
+  .numberField{
+      width: 300px;
+      padding: 20px;
+      margin-bottom: 30px;
+      border-radius: 8px 8px 0 0;
+      border:none;
+      border-bottom: 1px solid white;
+      background-color: #343434 ;
+      color: white;
+  }
+  
+  .numberField:focus{
+      border: none;
+      outline: none;
+      border-bottom: 2px solid  #e4002b;
+    }
+  
+    .errors{
+      color: red;
+      font-size: 9px;
+      margin-bottom: 20px;
+      margin-top: -20px;
+    }
+  
+  ::placeholder {
+  
+      opacity: 0.9; /* Firefox */
+      font-size: 14px;
+      font-weight: bold;
+      color: white;
+    }
+  
+  .loginButton{
+      height: 34px;
+      width: 340px;
+      display: flex;
+      justify-content: center;
+      padding: 20px 0px;
+      border-radius: 6px;
+      border: none;
+      background-color: #e4002b;
+      color: white;
+      align-items: center;
+      font-size: 14px;
+      font-weight: bolder;
+     
+      cursor: pointer;
+      text-decoration: none;
+      text-align: center;
+  }
+  /* .loginButton:hover{
+      background-color: #9b011d;
+  } */
+  
+  
+  
+  
+  .orLoginWith{
+      display: flex;
+      flex-direction: row;
+      justify-content:center;
+      align-items: center;
+      margin-top: 20px;
+   
+  
+  }
+  .formBottom{
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+  align-items: center;
+  
+  }
+  
+  .leftHr{
+      width: 95px;
+      margin-right: 20px;
+      margin-top: 20px;
+  }
+  .rightHr{
+      width: 95px;
+      margin-left: 20px;
+      margin-top: 20px;
+  }
+  
+  .googleIcon{
+      text-decoration: none;
+  
+     
+  }
+  
+  
+  
+  
+  
+  
+  
+  

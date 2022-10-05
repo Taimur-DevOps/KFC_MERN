@@ -1,0 +1,166 @@
+.header {
+  margin: 0px;
+  /* padding: 0 15px; */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1299px;
+
+
+ 
+}
+
+.container_left {
+  padding: 10px 10px;
+ 
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 30px;
+}
+
+.ButtonTagline {
+  background-color: #48413e;
+  font-size: 9px;
+  color: white;
+  font-weight: bold;
+  border: none;
+  border-radius: 6px;
+  height: 33px;
+  padding: 0 10px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.ButtonTagline:hover {
+  background-color: #3e3d3d;
+}
+.container_right {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.map {
+  padding: 0 14px;
+  border: none;
+  border-radius: 40px;
+  align-items: center;
+  height: 48px;
+  background-color: #48413e;
+  color: white;
+  font-weight: bold;
+  font-size: 16px;
+  width: 290px;
+  cursor: pointer;
+
+
+}
+.mapIcon{
+  font-size: 19px;
+  cursor: pointer;
+  color:#e4002b;
+  margin-right:5px;
+}
+.angleIcon{
+  margin-left:5px;
+}
+
+.cart {
+  
+  color: white;
+  border: none;
+  height: 34px;
+  width: 34px;
+  align-items: center;
+  font-weight: bolder;
+  font-size: 16px;
+  cursor: pointer;
+  background-color: black;
+  background-image: url("../assets/bucketfilled.svg");
+}
+.cart:hover{
+background-color: black;
+}
+
+.SignOut {
+  height: 34px;
+  display: flex;
+  padding: 0 10px;
+  border-radius: 6px;
+  border: none;
+  background-color: #e4002b;
+  color: white;
+  align-items: center;
+  font-size: 14px;
+  font-weight: bolder;
+
+  cursor: pointer;
+  text-decoration: none;
+}
+.SignOut:hover{
+  background-color: #9b011d;
+}
+.RegistrationButtons li{
+text-decoration: none;
+list-style-type: none;
+}
+.userInfoStatus{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+.userInfoIcon{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #e4002b;
+  min-height: 40px;
+  width: 40px;
+  padding: 2px;
+  font-weight: bold;
+  border-radius: 50%;
+  color: white;
+  text-align: center;
+  text-transform: capitalize;
+  cursor: pointer;
+
+}
+.listButtons{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  gap:5px;
+
+
+}
+
+.login{
+  height: 34px;
+  width: 100px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  padding: 0 10px;
+  border-radius: 6px;
+  border: none;
+  background-color: #e4002b;
+  color: white;
+  font-size: 14px;
+  font-weight: bolder;
+  margin-top: -5px;
+  cursor: pointer;
+  text-decoration: none;
+}
+.login:hover{
+  background-color: #9b011d;
+}
+
+.buttonIcon{
+  margin: 0 5px;
+}

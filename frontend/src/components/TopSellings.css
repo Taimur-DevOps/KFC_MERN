@@ -1,0 +1,26 @@
+.TopSellings {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin: 55px 0px 33px;
+  }
+  .Tline {
+    width: 1170px;
+    margin-left: 20px;
+    color: #3f3f3f;
+  }
+  hr {
+    color: #3f3f3f;
+  }
+  
+
+
+  .TopSellingGrid{
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 15px;
+    max-width: 1600px;
+  }
