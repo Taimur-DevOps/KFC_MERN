@@ -6,7 +6,6 @@ import { Link, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { logout, reset } from "../authFeatures/authSlice";
 
-
 const Header = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -21,12 +20,9 @@ const Header = () => {
 
   const product = useSelector((state) => state.cart.cartData);
 
-
-const profilePage=()=>{
-  navigate("/profile")
-}
-
-
+  const profilePage = () => {
+    navigate("/profile");
+  };
 
   return (
     <div className="header">
@@ -39,19 +35,21 @@ const profilePage=()=>{
       </div>
 
       <div className="container_right">
-        <button className="map">
-          {" "}
-          <span>
-            <i className="fa fa-map-marker mapIcon" aria-hidden="true"></i>
+
+          <span >
+            {/* <i className="fa fa-map-marker mapIcon" aria-hidden="true"></i> */}
+            <select name="dog-names" className="mapOptions" id="dog-names">
+              <option value="rigatoni">Johar Town Lahore</option>
+              <option value="dave">Iqbal Town Lahore</option>
+              <option value="pumpernickel">Model Town Lahore</option>
+              <option value="reeses">Iqbal Town Lahore</option>
+            </select>
+            {/* <i className="fa fa-angle-down angleIcon" aria-hidden="true"></i> */}
           </span>{" "}
-          Block G Phase 1 Johar Town{" "}
-          <span>
-            <i className="fa fa-angle-down angleIcon" aria-hidden="true"></i>
-          </span>{" "}
-        </button>
+   
 
         <Link to="/bucket">
-          <button className="cart">  {product.length} </button>{" "}
+          <button className="cart"> {product.length} </button>{" "}
         </Link>
 
         {/* <Link to="/login" style={{ textDecoration: "none" }}> */}
@@ -60,23 +58,25 @@ const profilePage=()=>{
           {user ? (
             <li>
               <div className="userInfoStatus">
-              <button className="SignOut " onClick={onLogout}>
-                <FaSignOutAlt /> SignOut
-              </button>
+                <button className="SignOut " onClick={onLogout}>
+                  <FaSignOutAlt /> SignOut
+                </button>
 
-              <span className="userInfoIcon" onClick={profilePage}>{user.name[0][0]} </span>
+                <span className="userInfoIcon" onClick={profilePage}>
+                  {user.name[0][0]}{" "}
+                </span>
               </div>
             </li>
           ) : (
             <div className="listButtons">
               <li>
                 <Link to="/login" className="login">
-                <FaSignInAlt /> <span className="buttonIcon" > Login</span>
+                  <FaSignInAlt /> <span className="buttonIcon"> Login</span>
                 </Link>
               </li>
               <li>
                 <Link to="/register" className="login">
-                  <FaUser />  <span className="buttonIcon"> Register </span>
+                  <FaUser /> <span className="buttonIcon"> Register </span>
                 </Link>
               </li>
             </div>

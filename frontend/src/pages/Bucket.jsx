@@ -30,7 +30,9 @@ const Bucket = () => {
   };
 
   const proceedDelivery = () => {
-    navigate("/delivery");
+    if (product.length > 0) {
+      navigate("/delivery");
+    }
   };
 
   return (
@@ -58,60 +60,68 @@ const Bucket = () => {
 
       <div className="bucketLowerContainer">
         <div className="itemsContainer">
-          {product.map((item) => {
-            return (
-              <div key={item.id}>
-                <div className="productDetail">
-                  <div className="product">
-                    <img
-                      src={item.image}
-                      className="productImg"
-                      alt="itemImg"
-                    />
-                    <div className="productPriceQuantity">
-                      <h3> {item.name}</h3>
-                      <h4>Rs {item.price}</h4>
-                      <h4>
-                        <span>
-                          <i
-                            className="fa fa-minus UDicons"
-                            onClick={() => dec(item.id)}
-                            aria-hidden="true"
-                          ></i>
-                        </span>
-                        {item.quantity}
-                        <span>
-                          <i
-                            className="fa fa-plus UDicons"
-                            onClick={() => inc(item.id)}
-                            aria-hidden="true"
-                          ></i>
-                        </span>
-                      </h4>
-                    </div>
-                  </div>
-                  <div>
-                    <h3>Rs {item.total}</h3>
-                    <h5>
-                      <span>
-                        <i
+          {product.length > 0 ? (
+            <>
+              
+              {product.map((item) => {
+                return (
+                  <div key={item.id}>
+                    <div className="productDetail">
+                      <div className="product">
+                        <img
+                          src={item.image}
+                          className="productImg"
+                          alt="itemImg"
+                        />
+                        <div className="productPriceQuantity">
+                          <h3> {item.name}</h3>
+                          <h4>Rs {item.price}</h4>
+                          <h4>
+                            <span>
+                              <i
+                                className="fa fa-minus UDicons"
+                                onClick={() => dec(item.id)}
+                                aria-hidden="true"
+                              ></i>
+                            </span>
+                            {item.quantity}
+                            <span>
+                              <i
+                                className="fa fa-plus UDicons"
+                                onClick={() => inc(item.id)}
+                                aria-hidden="true"
+                              ></i>
+                            </span>
+                          </h4>
+                        </div>
+                      </div>
+                      <div>
+                        <h3>Rs {item.total}</h3>
+                        <h5>
+                          <span>
+                            {/* <i
                           className="fa fa-pencil UDicons"
                           aria-hidden="true"
-                        ></i>
-                      </span>
-                      <span>
-                        <i
-                          className="fa fa-trash UDicons"
-                          onClick={() => del(item.id)}
-                          aria-hidden="true"
-                        ></i>
-                      </span>
-                    </h5>
+                        ></i> */}
+                            {""}
+                          </span>
+                          <span>
+                            <i
+                              className="fa fa-trash UDicons"
+                              onClick={() => del(item.id)}
+                              aria-hidden="true"
+                            ></i>
+                          </span>
+                        </h5>
+                      </div>
+                    </div>
                   </div>
-                </div>
-              </div>
-            );
-          })}
+                );
+              })}
+            </>
+          ) : (
+            <h1 style={{textAlign:"center"}}>Cart is Empty</h1>
+          )}
         </div>
 
         <div className="rightContainer ">
