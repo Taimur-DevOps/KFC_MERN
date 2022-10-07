@@ -18,7 +18,7 @@ export const postData = createAsyncThunk(
 const cartSlice = createSlice({
   name: "cart",
   initialState: initialState,
-
+ //reducers functions he hote hain jis ki madad sy hum apne state ko mutate karte hain 
   reducers: {
     add(state, action) {
       // console.log(action.payload);
