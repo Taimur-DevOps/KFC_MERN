@@ -3,9 +3,8 @@ import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { Toaster, toast } from "react-hot-toast";
 
- 
 // import { FaUser } from "react-icons/fa";
-import { register, reset } from "../authFeatures/authSlice";
+import { register, reset } from "../auth/authSlice";
 import Spinner from "../components/Spinner";
 import "./Register.css";
 import ChachaKfc from "../assets/ChachaKfc.gif";
@@ -48,14 +47,12 @@ function Register() {
 
   const onSubmit = (e) => {
     e.preventDefault();
-    
-    if(password.length<6){
-      toast.error("Your Password is less than 6 Characters")
+
+    if (password.length < 6) {
+      toast.error("Your Password is less than 6 Characters");
     }
     if (password !== password2) {
-      console.log("toast  working");
       toast.error("Passwords do not match");
-      console.log("toast not working");
     } else {
       const userData = {
         name,

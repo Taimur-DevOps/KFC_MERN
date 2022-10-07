@@ -46,7 +46,7 @@ const TopSelling = (props) => {
       ) : (
         <>
           <img src={props.imageUrl} alt="img" className="sellingImg" />
-          <h2>{props.Name}</h2>
+          <h2 style={{marginTop:"28px"}}>{props.Name}</h2>
           <p className="desc">{props.desc}</p>
 
           <div className="PriceNbutton">

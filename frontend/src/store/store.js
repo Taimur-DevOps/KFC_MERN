@@ -1,6 +1,6 @@
 import { configureStore } from "@reduxjs/toolkit";
 import cartReducer from "./cartSlice";
-import authReducer from "../authFeatures/authSlice";
+import authReducer from "../auth/authSlice";
 
 import storage from "redux-persist/lib/storage";
 // import storageSession from 'reduxjs-toolkit-persist/lib/storage/session'

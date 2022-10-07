@@ -5,10 +5,6 @@ import "../components/TopSellings.css";
 import NavCategories from "../components/NavCategories";
 import { useEffect, useState } from "react";
 
-
-
-
-
 const Alacarte = () => {
   const [myData, setmyData] = useState([]);
 

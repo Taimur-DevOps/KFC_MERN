@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 // import { ToastContainer, toast } from "react-toastify";
-import { login, reset } from "../authFeatures/authSlice";
+import { login, reset } from "../auth/authSlice";
 import Spinner from "../components/Spinner";
 import { Toaster, toast } from "react-hot-toast";
 import {  Link } from "react-router-dom";

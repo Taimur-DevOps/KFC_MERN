@@ -8,12 +8,12 @@ const Delivery = () => {
   const product = useSelector((state) => state.cart.cartData);
   const User = useSelector((state) => state.auth);
 
-  console.log("Products",product)
-  console.log("users",User)  
+  console.log("Products", product);
+  console.log("users", User);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const submitOrder = () => { 
+  const submitOrder = () => {
     // const { id, name, price, imageUrl, total } = product;
     const user = User.user._id;
     // console.log("prodyct" ,product)
@@ -24,14 +24,11 @@ const Delivery = () => {
       item: product,
     };
     console.log("order is submitted from frontend", data);
-
-    toast.success("Order Submitted");
-
     dispatch(postData(data));
-
+    toast.success("Order Submitted");
     setTimeout(() => {
       navigate("/");
-   dispatch(cartEmpty([]))
+      dispatch(cartEmpty([]));
     }, 2000);
   };
 

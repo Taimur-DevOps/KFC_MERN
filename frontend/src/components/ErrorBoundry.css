@@ -1,0 +1,19 @@
+.errorUi{
+    background-color: black;
+    color:white;
+    min-width: 100%;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    ;
+    
+}
+
+.errorUi > h1 {
+    font-size: 34px;
+    margin-top: -20px;
+    font-weight: 200;
+    color: rgb(72, 67, 67) ;
+}
