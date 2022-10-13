@@ -5,8 +5,11 @@ import logo from "../assets/logo.png";
 import { Link, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { logout, reset } from "../auth/authSlice";
+import { useLocation } from "react-router-dom";
 
 const Header = () => {
+
+
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -23,6 +26,16 @@ const Header = () => {
   const profilePage = () => {
     navigate("/profile");
   };
+
+
+  //restircting Header for admin page
+  const { pathname } = useLocation();
+  if (pathname === "/admin") return null;
+    if (pathname === "/admin/dashboard") return null;
+    if (pathname === "/admin/users") return null;
+    if (pathname === "/admin/orders") return null;
+    if (pathname === "/admin/products") return null;
+    if (pathname === "/admin/addProducts") return null;
 
   return (
     <div className="header">

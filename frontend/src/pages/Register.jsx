@@ -31,6 +31,8 @@ function Register() {
       toast.error(message);
     }
 
+    console.log(user,isSuccess,"hgsjagskj")
+
     if (isSuccess || user) {
       navigate("/");
     }
@@ -78,10 +80,10 @@ function Register() {
             className: "",
             style: {
               borderRadius: "6px",
-              padding: "15px 50px",
+              padding: "15px 20px",
               color: "white",
               backgroundColor: "#e4002b ",
-              marginTop: "55px",
+              marginTop: "20px",
               fontSize: "13px",
             },
           }}

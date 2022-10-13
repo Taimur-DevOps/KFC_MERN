@@ -3,8 +3,18 @@ import "./Footer.css"
 import logo from "../assets/logo.png"
 import applebadge from "../assets/applebadge.svg"
 import googlebadge from "../assets/googlebadge.svg"
+import { useLocation } from "react-router-dom";
 
 const Footer = () => {
+      //restircting footer for admin page
+    const { pathname } = useLocation();
+    if (pathname === "/admin") return null;
+    if (pathname === "/admin/dashboard") return null;
+    if (pathname === "/admin/users") return null;
+    if (pathname === "/admin/orders") return null;
+    if (pathname === "/admin/products") return null;
+    if (pathname === "/admin/addProducts") return null;
+
   return (
     <div className='container'>
 

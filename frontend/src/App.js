@@ -5,6 +5,13 @@ import { Routes, Route } from "react-router-dom";
 import React, { Suspense } from 'react';
 import Profile from "./pages/Profile";
 import ScrollToTop from "react-scroll-to-top";
+import Admin from "./pages/Admin/Admin";
+import Dashboard from "./pages/Admin/Dashboard";
+import AddNewProduct from "./pages/Admin/AddNewProduct";
+import UsersDetail from "./pages/Admin/UsersDetail";
+import Orders from "./pages/Admin/Orders";
+import Products from "./pages/Admin/Products";
+
 
 // import Footer from "./components/Footer";
 const Footer = React.lazy(() => import('./components/Footer'))
@@ -42,9 +49,18 @@ function App() {
             <Route path="/" element={<Main />} />
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
+
+            <Route path="/admin" element={<Admin/>} />
+            <Route path="/admin/dashboard" element={<Dashboard/>} />
+            <Route path="/admin/users" element={<UsersDetail/>} />
+            <Route path="/admin/orders" element={<Orders/>} />
+            <Route path="/admin/products" element={<Products/>} />
+            <Route path="/admin/addProducts" element={<AddNewProduct/>} />
+
             <Route path="/bucket" element={<Bucket />} />
             <Route path="/delivery" element={<Delivery />} />
             <Route path="/profile" element={<Profile />} />
+            
             <Route path="/Categories/everydayValue" element={<EverydayValue />} />
             <Route path="/Categories/Alacarte" element={<Alacarte />} />
             <Route path="/Categories/Signature" element={<Signature />} />
