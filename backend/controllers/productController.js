@@ -6,9 +6,16 @@ const Products = require("../models/product");
 const getProducts = async (req, res) => {
   try {
     console.log("the output is ", req.body.category);
+    if(req.body.category){
     const Data = await Products.find({ category: req.body.category });
+     return res.status(200).json(Data);
+    }
+    else{
+      const Data = await Products.find();
+      return res.status(200).json(Data);
+
+    }
     // console.log(Data);
-    res.status(200).json(Data);
   } catch (error) {
     res.status(400).json(error.message);
     console.log(error);

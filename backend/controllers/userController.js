@@ -2,12 +2,28 @@ const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 const asyncHandler = require("express-async-handler");
 const User = require("../models/userModel");
+const Joi = require("joi");
+
+const SignupSchema = Joi.object().keys({
+  name: Joi.string().max(24).required(),
+  email: Joi.string().trim().email().required(),
+  password: Joi.string().min(6).max(10).required(),
+  password2: Joi.ref("password"),
+});
 
 // @desc    Register new user
 // @route   POST /api/users
 // @access  Public
 const registerUser = asyncHandler(async (req, res) => {
   const { name, email, password } = req.body;
+
+  const { error, value } = SignupSchema.validate(req.body, { abortEarly: false });
+  if (error) {
+    res.status(400);
+    console.log(error);
+    throw new Error(error);
+    // return res.json(error.details);
+  }
 
   //if empty fields
   if (!name || !email || !password) {
@@ -23,6 +39,12 @@ const registerUser = asyncHandler(async (req, res) => {
     throw new Error("User already exists");
   }
 
+
+
+
+
+
+  
   // Hash password
   const salt = await bcrypt.genSalt(10);
   const hashedPassword = await bcrypt.hash(password, salt);
@@ -33,7 +55,7 @@ const registerUser = asyncHandler(async (req, res) => {
     email,
     password: hashedPassword,
   });
-  
+
   if (user) {
     res.status(201).json({
       _id: user.id,
