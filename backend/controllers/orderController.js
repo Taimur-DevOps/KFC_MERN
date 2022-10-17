@@ -1,4 +1,5 @@
 const Orders = require("../models/orderModel");
+const asyncHandler = require("express-async-handler");
 
 //@desc  Get Products
 //@route GET/api/products
@@ -34,7 +35,23 @@ const getOrders = async (req, res) => {
   }
 };
 
+
+// fetching all the orders
+const getAllOrders = asyncHandler(async (req, res) => {
+  try {
+   const orders= await Orders.find()
+   .populate('user')
+   console.log("jahksjdh",orders)
+
+   res.status(200).send(orders)
+  } catch (error) {
+   res.status(404).json({message:error})
+  }
+ });
+ 
+
 module.exports = {
   setOrders,
   getOrders,
+  getAllOrders
 };

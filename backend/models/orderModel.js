@@ -21,6 +21,8 @@ const orderSchema = mongoose.Schema(
       type: Object,
       required: true,
     },
+
+    
     // address: {
     //   type: String,
     //   required: true,

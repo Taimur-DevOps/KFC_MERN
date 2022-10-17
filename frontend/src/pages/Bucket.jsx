@@ -99,10 +99,10 @@ const Bucket = () => {
                         <h3>Rs {item.total}</h3>
                         <h5>
                           <span>
-                            {/* <i
+                            <i
                           className="fa fa-pencil UDicons"
                           aria-hidden="true"
-                        ></i> */}
+                        ></i>
                             {""}
                           </span>
                           <span>

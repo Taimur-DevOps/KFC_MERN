@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import MainContainer from "../../components/Admin/MainContainer";
 import SideNavbar from "../../components/Admin/SideNavbar";
 import Card from "../../components/Admin/Card";
+import { FaRegTrashAlt } from 'react-icons/fa';
 import "./Products.css";
 import axios from "axios";
 // import snacks from "../../assets/snacks.png"
@@ -47,6 +48,7 @@ const Products = () => {
       return (count5 = count5 + 1);
     }
   });
+  console.log(FilterCategories)
   // setCount(data)
 
   const icons = [
@@ -107,6 +109,7 @@ const Products = () => {
                 <th>Price</th>
                 <th>Category</th>
                 <th>Description</th>
+                <th>Action</th>
               </tr>
             </thead>
 
@@ -121,6 +124,7 @@ const Products = () => {
                     <td>{item.price}</td>
                     <td>{item.category}</td>
                     <td>{item.desc}</td>
+                    <td className="deleteIconAdmin" >  <FaRegTrashAlt /> </td>
                   </tr>
                 </tbody>
               );

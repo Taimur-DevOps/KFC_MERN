@@ -7,19 +7,21 @@ import axios from "axios";
 import { useSelector } from "react-redux";
 
 const Orders = () => {
-  const { user } = useSelector((state) => state.auth);
+  let i = 1; //i for Sr# for table orders
 
   const [myData, setmyData] = useState([]);
+  const { user } = useSelector((state) => state.auth);
+
   useEffect(() => {
     axios
-      .get("http://localhost:8080/api/orders/", {
+      .get("http://localhost:8080/api/orders/getAllOrders", {
         headers: { authorization: `Bearer ${user.token}` },
       })
       .then((res) => {
         setmyData(res.data);
         console.log("the data are", res.data);
       });
-  }, []);
+  }, [user]);
 
   console.log("mydata", myData);
   const icons = [
@@ -40,6 +42,7 @@ const Orders = () => {
       order: "fa fa-list-alt icon",
     },
   ];
+
   return (
     <>
       <SideNavbar />
@@ -49,7 +52,11 @@ const Orders = () => {
           <div className="orderStatusContainer">
             <h3 style={{ marginLeft: "25px", opacity: "0.6" }}>Categories</h3>
             <div className="DashboardBody">
-              <Card title="All Orders" number="250" icon={icons[4].order} />
+              <Card
+                title="All Orders"
+                number={myData.length}
+                icon={icons[4].order}
+              />
               <Card title="Active Orders" number="80" icon={icons[3].active} />
               <Card title="Completed" number="120" icon={icons[0].completed} />
               <Card title="Pending" number="80" icon={icons[2].pending} />
@@ -60,8 +67,11 @@ const Orders = () => {
           <div className="tableData">
             <table id="products">
               <tr>
-                <th>User</th>
+                <th>Sr#</th>
+                <th>Id</th>
                 <th>Name</th>
+                <th>Email</th>
+                <th>Date</th>
                 <th>Order </th>
                 <th>Price</th>
                 <th>Quantity</th>
@@ -76,8 +86,11 @@ const Orders = () => {
                     {item.cart.map((subItem) => {
                       return (
                         <tr>
+                          <td>{i++}</td>
                           <td>{item._id}</td>
                           <td>{user.name}</td>
+                          <td>{user.email}</td>
+                          <td>{item.createdAt}</td>
                           <td>{subItem.name}</td>
                           <td>Rs:{subItem.price} </td>
                           <td>* {subItem.quantity}</td>

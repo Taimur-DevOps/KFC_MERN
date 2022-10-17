@@ -1,21 +1,30 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import "./Products.css";
 import MainContainer from "../../components/Admin/MainContainer";
 import SideNavbar from "../../components/Admin/SideNavbar";
+import { FaRegTrashAlt } from 'react-icons/fa';
+import { useSelector } from "react-redux";
+import axios from "axios";
 
-import { useNavigate, Link } from "react-router-dom";
-import { useSelector, useDispatch } from "react-redux";
 
-import "./Products.css";
 
 const UsersDetail = () => {
-
   const { user } = useSelector((state) => state.auth);
-  console.log("users are ", user)
+  const [myData, setmyData] = useState([]);
 
-  const product = useSelector((state) => state.cart.cartData);
 
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
+  useEffect(() => {
+
+    axios.get("http://localhost:8080/api/users/getAllUsers").then((res) => {
+      setmyData(res.data);
+      console.log(res.data);
+    });
+  }, []);
+
+
+  console.log("the data is ", myData)
+  console.log("isadmin", user.isAdmin);
+
 
   return (
     <>
@@ -26,7 +35,7 @@ const UsersDetail = () => {
           <div className="orderStatusContainer">
             <h3 style={{ marginLeft: "25px", opacity: "0.6" }}>
               <i
-                class="fa fa-search icon iconAdjustment"
+                className="fa fa-search icon iconAdjustment"
                 aria-hidden="true"
               ></i>
               <input
@@ -41,29 +50,32 @@ const UsersDetail = () => {
           {/* table for products */}
           <div className="tableData">
             <table id="products">
-              <tr>
-                <th>User ID</th>
-                <th>Name</th>
-                <th>Email</th>
-                <th>User Type</th>
-                <th>Created At</th>
-              </tr>
+              <thead>
+                <tr>
+                  <th>User ID</th>
+                  <th>Name</th>
+                  <th>Email</th>
+                  <th>User Type</th>
+                  <th>Created At</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
 
+              {myData.map((post) => {
 
-
-
-              <tr key={user._id}>
-                <td>{user._id}</td>
-                <td>{user.name[0]}</td>
-                <td>{user.email}</td>
-                <td>Admin</td>
-                <td>{user.createdAt}</td>
-
-              </tr>
-
-
-
-
+                return (
+                  <tbody key={post._id}>
+                    <tr >
+                      <td>{post._id}</td>
+                      <td>{post.name[0]}</td>
+                      <td>{post.email}</td>
+                      <td>{post.isAdmin.toString()}</td>
+                      <td>{post.createdAt}</td>
+                      <td className="deleteIconAdmin">  <FaRegTrashAlt /> </td>
+                    </tr>
+                  </tbody>
+                )
+              })}
 
             </table>
           </div>

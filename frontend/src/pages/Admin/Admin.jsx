@@ -4,9 +4,13 @@ import "./Admin.css";
 import SideNavbar from "../../components/Admin/SideNavbar";
 import MainContainer from "../../components/Admin/MainContainer";
 import { useEffect } from "react";
+// import { useSelector, useDispatch } from "react-redux";
+// import { useNavigate } from "react-router-dom";
 
 const Admin = () => {
+  
   useEffect(() => {
+
     const prevCOlor = document.body.style.backgroundColor;
     document.body.style.backgroundColor = "white"
     

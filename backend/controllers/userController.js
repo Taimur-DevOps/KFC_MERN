@@ -61,6 +61,7 @@ const registerUser = asyncHandler(async (req, res) => {
       _id: user.id,
       name: user.name,
       email: user.email,
+   
       token: generateToken(user._id),
     });
   } else {
@@ -83,6 +84,7 @@ const loginUser = asyncHandler(async (req, res) => {
       _id: user.id,
       name: user.name,
       email: user.email,
+      isAdmin:user.isAdmin,
       token: generateToken(user._id),
     });
   } else {
@@ -105,8 +107,26 @@ const generateToken = (id) => {
   });
 };
 
+
+// fetch all the users
+const getAllUsers = asyncHandler(async (req, res) => {
+ try {
+  const users= await User.find({})
+  console.log("theheheheh",users)
+  res.status(200).send(users)
+ } catch (error) {
+  res.status(404).json({message:error})
+ }
+});
+
+
+
+
+
 module.exports = {
   registerUser,
   loginUser,
   getMe,
+
+  getAllUsers
 };

@@ -4,8 +4,32 @@ import SideNavbar from "../../components/Admin/SideNavbar";
 import Card from "../../components/Admin/Card";
 import WeeklyChart from "../../components/Admin/WeeklyChart";
 import MonthlyChart from "../../components/Admin/MonthlyChart";
+import { useEffect } from "react";
+import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+
+
 
 const Dashboard = () => {
+  const { user } = useSelector((state) => state.auth);
+
+  const navigate=useNavigate();
+ 
+
+  useEffect(() => {
+    console.log("isadmin", user.isAdmin);
+    if (localStorage.getItem("user") === null || !user.isAdmin) {
+      navigate("/");
+    }
+
+    const prevCOlor = document.body.style.backgroundColor;
+    document.body.style.backgroundColor = "white";
+
+    return () => {
+      document.body.style.backgroundColor = prevCOlor;
+    };
+  }, []);
+
   const icons = [
     {
       completed: "fa fa-calendar-check-o icon ",

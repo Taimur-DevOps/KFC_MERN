@@ -15,6 +15,7 @@ export const postData = createAsyncThunk(
 )
 
 
+
 const cartSlice = createSlice({
   name: "cart",
   initialState: initialState,

@@ -61,3 +61,15 @@ td img {
   position: relative;
   left: 290px;
 }
+
+
+.deleteIconAdmin{
+  font-size: 14px;
+  color: black;
+}
+.deleteIconAdmin:hover{
+  color: #e4002b;
+  transform: scaleY(1.1) ;
+
+}
+

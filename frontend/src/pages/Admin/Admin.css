@@ -248,6 +248,13 @@
     rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
 }
 
+.formContainer{
+  max-width: 1300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 
 .form-style-1 {
 
