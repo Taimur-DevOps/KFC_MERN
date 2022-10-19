@@ -24,7 +24,6 @@
   box-sizing: border-box;
 } */
 
-
 .page {
   width: 100%;
   color: rgb(13, 13, 13);
@@ -248,55 +247,50 @@
     rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
 }
 
-.formContainer{
+.formContainer {
   max-width: 1300px;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-
 .form-style-1 {
-
-	width: 400px;
-	padding: 20px 12px 10px 20px;
-
+  width: 400px;
+  padding: 20px 12px 10px 20px;
 }
 .form-style-1 li {
-	padding: 0;
-	display: block;
-	list-style: none;
-	margin: 10px 0 0 0;
+  padding: 0;
+  display: block;
+  list-style: none;
+  margin: 10px 0 0 0;
 }
-.form-style-1 label{
-	margin:0 0 3px 0;
-	padding:0px;
-	display:block;
-	font-weight: 400;
+.form-style-1 label {
+  margin: 0 0 3px 0;
+  padding: 0px;
+  display: block;
+  font-weight: 400;
   color: black;
-  
 }
-.form-style-1 input[type=text], 
-.form-style-1 input[type=date],
-.form-style-1 input[type=datetime],
-.form-style-1 input[type=number],
-.form-style-1 input[type=search],
-.form-style-1 input[type=time],
-.form-style-1 input[type=url],
-.form-style-1 input[type=email]
-textarea, 
-select{
-	box-sizing: border-box;
-	padding: 10px;
-	margin:4px 0px;
+.form-style-1 input[type="text"],
+.form-style-1 input[type="date"],
+.form-style-1 input[type="datetime"],
+.form-style-1 input[type="number"],
+.form-style-1 input[type="search"],
+.form-style-1 input[type="time"],
+.form-style-1 input[type="url"],
+.form-style-1 input[type="email"] textarea,
+select {
+  box-sizing: border-box;
+  padding: 10px;
+  margin: 4px 0px;
   width: 400px;
-	outline: none;	
-  border: 1px solid rgb(190, 190, 190) ;
+  outline: none;
+  border: 1px solid rgb(190, 190, 190);
   background-color: white;
   border-radius: 2px;
 }
 
-.form-style-1 input[type=file]{
+.form-style-1 input[type="file"] {
   width: 96%;
   background-color: #f6f6f6;
   border-radius: 2px;
@@ -310,34 +304,58 @@ select{
   cursor: pointer;
 }
 
-.form-style-1 .field-divided{
-	width: 49%;
+.form-style-1 .field-divided {
+  width: 49%;
 }
 
-.form-style-1 .field-long{
-	width: 100%;
+.form-style-1 .field-long {
+  width: 100%;
 }
 
-.form-style-1 .field-select{
-	width: 100%;
+.form-style-1 .field-select {
+  width: 100%;
 }
-.form-style-1 .field-textarea{
-	height: 100px;
+.form-style-1 .field-textarea {
+  height: 100px;
+  width: 98%;
 }
-.form-style-1 input[type=submit], .form-style-1 input[type=button]{
-	background:#e4002b;
+.form-style-1 input[type="submit"],
+.form-style-1 input[type="button"] {
+  background: #e4002b;
   width: 100%;
   cursor: pointer;
-	padding: 8px 15px 8px 15px;
-	border: none;
-	color: #fff;
+  padding: 8px 15px 8px 15px;
+  border: none;
+  color: #fff;
   margin-bottom: 50px;
 }
-.form-style-1 input[type=submit]:hover, .form-style-1 input[type=button]:hover{
-	background: #700115;;
-	box-shadow:none;
-
+.form-style-1 input[type="submit"]:hover,
+.form-style-1 input[type="button"]:hover {
+  background: #700115;
+  box-shadow: none;
 }
-.form-style-1 .required{
-	color:red;
+.form-style-1 .required {
+  color: red;
+}
+
+/* --------------------------OrderJS----------------- */
+
+#action {
+  width: 100px;
+}
+
+select {
+  width: 150px;
+  height: 30px;
+  padding: 5px;
+}
+
+select option:first-child {
+  color: black;
+}
+select option:nth-child(2) {
+  color: green;
+}
+select option:nth-child(3) {
+  color: red;
 }

@@ -95,7 +95,7 @@ const Bucket = () => {
                           </h4>
                         </div>
                       </div>
-                      <div>
+                      <div className="priceNIcons">
                         <h3>Rs {item.total}</h3>
                         <h5>
                           <span>

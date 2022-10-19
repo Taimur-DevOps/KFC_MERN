@@ -2,29 +2,37 @@ import React, { useEffect, useState } from "react";
 import "./Products.css";
 import MainContainer from "../../components/Admin/MainContainer";
 import SideNavbar from "../../components/Admin/SideNavbar";
-import { FaRegTrashAlt } from 'react-icons/fa';
+import { FaRegTrashAlt } from "react-icons/fa";
 import { useSelector } from "react-redux";
 import axios from "axios";
-
-
 
 const UsersDetail = () => {
   const { user } = useSelector((state) => state.auth);
   const [myData, setmyData] = useState([]);
 
-
   useEffect(() => {
-
     axios.get("http://localhost:8080/api/users/getAllUsers").then((res) => {
       setmyData(res.data);
       console.log(res.data);
     });
   }, []);
 
-
-  console.log("the data is ", myData)
+  // console.log("the data is ", myData)
   console.log("isadmin", user.isAdmin);
 
+  const deleteUser = (id) => {
+    console.log("Deleted ", id);
+
+    axios.delete(`http://localhost:8080/api/users/${id}`).then((res) => {
+      setTimeout(() => {
+        axios.get("http://localhost:8080/api/users/getAllUsers").then((res) => {
+          setmyData(res.data);
+        });
+      }, 10);
+    });
+  };
+
+  let i=1;
 
   return (
     <>
@@ -41,7 +49,7 @@ const UsersDetail = () => {
               <input
                 type="text"
                 id="myInput"
-                placeholder="Search for names.."
+                placeholder="Search for User.."
                 title="Type in a name"
               ></input>
             </h3>
@@ -52,6 +60,7 @@ const UsersDetail = () => {
             <table id="products">
               <thead>
                 <tr>
+                  <th>S/n</th>
                   <th>User ID</th>
                   <th>Name</th>
                   <th>Email</th>
@@ -62,21 +71,22 @@ const UsersDetail = () => {
               </thead>
 
               {myData.map((post) => {
-
                 return (
                   <tbody key={post._id}>
-                    <tr >
+                    <tr>
+                      <td>{i++}</td>
                       <td>{post._id}</td>
                       <td>{post.name[0]}</td>
                       <td>{post.email}</td>
                       <td>{post.isAdmin.toString()}</td>
                       <td>{post.createdAt}</td>
-                      <td className="deleteIconAdmin">  <FaRegTrashAlt /> </td>
+                      <td className="deleteIconAdmin">
+                        <FaRegTrashAlt onClick={() => deleteUser(post._id)} />
+                      </td>
                     </tr>
                   </tbody>
-                )
+                );
               })}
-
             </table>
           </div>
         </div>

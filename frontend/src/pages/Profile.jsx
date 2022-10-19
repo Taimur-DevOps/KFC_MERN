@@ -21,7 +21,7 @@ const Profile = () => {
         setmyData(res.data);
         console.log("the data are", res.data);
       });
-  },[]);
+  },[user]);
   return (
     <div className="divRows">
       <div className="UserInfo">

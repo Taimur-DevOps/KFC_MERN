@@ -24,10 +24,13 @@ const setOrders = async (req, res) => {
   }
 };
 
+// single user order history
 const getOrders = async (req, res) => {
-  console.log(req.user._id)
+  console.log(req.user._id);
   try {
-    const Data = await Orders.find({ user: req.user._id });
+    const Data = await Orders.find({ user: req.user._id })
+      .sort({ createdAt: -1 })
+      .lean();
     res.status(200).json(Data);
   } catch (error) {
     res.status(400).json(error.message);
@@ -35,23 +38,20 @@ const getOrders = async (req, res) => {
   }
 };
 
-
-// fetching all the orders
+// fetching all the orders from all users
 const getAllOrders = asyncHandler(async (req, res) => {
   try {
-   const orders= await Orders.find()
-   .populate('user')
-   console.log("jahksjdh",orders)
+    const orders = await Orders.find().populate("user").sort({createdAt:-1}).lean();
+    console.log("All Orders>>>: ", orders);
 
-   res.status(200).send(orders)
+    res.status(200).send(orders);
   } catch (error) {
-   res.status(404).json({message:error})
+    res.status(404).json({ message: error });
   }
- });
- 
+});
 
 module.exports = {
   setOrders,
   getOrders,
-  getAllOrders
+  getAllOrders,
 };

@@ -17,7 +17,9 @@ const SignupSchema = Joi.object().keys({
 const registerUser = asyncHandler(async (req, res) => {
   const { name, email, password } = req.body;
 
-  const { error, value } = SignupSchema.validate(req.body, { abortEarly: false });
+  const { error, value } = SignupSchema.validate(req.body, {
+    abortEarly: false,
+  });
   if (error) {
     res.status(400);
     console.log(error);
@@ -39,12 +41,6 @@ const registerUser = asyncHandler(async (req, res) => {
     throw new Error("User already exists");
   }
 
-
-
-
-
-
-  
   // Hash password
   const salt = await bcrypt.genSalt(10);
   const hashedPassword = await bcrypt.hash(password, salt);
@@ -61,7 +57,7 @@ const registerUser = asyncHandler(async (req, res) => {
       _id: user.id,
       name: user.name,
       email: user.email,
-   
+
       token: generateToken(user._id),
     });
   } else {
@@ -84,7 +80,7 @@ const loginUser = asyncHandler(async (req, res) => {
       _id: user.id,
       name: user.name,
       email: user.email,
-      isAdmin:user.isAdmin,
+      isAdmin: user.isAdmin,
       token: generateToken(user._id),
     });
   } else {
@@ -107,26 +103,34 @@ const generateToken = (id) => {
   });
 };
 
-
 // fetch all the users
 const getAllUsers = asyncHandler(async (req, res) => {
- try {
-  const users= await User.find({})
-  console.log("theheheheh",users)
-  res.status(200).send(users)
- } catch (error) {
-  res.status(404).json({message:error})
- }
+  try {
+    const users = await User.find().sort({ createdAt: -1 });
+    console.log("ALL USERS>>>>>>>>", users);
+    res.status(200).send(users);
+  } catch (error) {
+    res.status(404).json({ message: error });
+  }
 });
 
-
-
-
+//  Delete specific user by ID 
+const deleteUser = async (req, res) => {
+  const id = req.params.id;
+  try {
+    const userId = await User.findByIdAndDelete(id);
+    res.send(userId);
+    console.log("the User is deleted");
+  } catch (error) {
+    res.status(400).json(error.message);
+    console.log(error);
+  }
+};
 
 module.exports = {
   registerUser,
   loginUser,
   getMe,
-
-  getAllUsers
+  deleteUser,
+  getAllUsers,
 };

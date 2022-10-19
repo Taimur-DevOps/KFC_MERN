@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import MainContainer from "../../components/Admin/MainContainer";
 import SideNavbar from "../../components/Admin/SideNavbar";
 import Card from "../../components/Admin/Card";
-import { FaRegTrashAlt } from 'react-icons/fa';
+import { FaRegTrashAlt } from "react-icons/fa";
 import "./Products.css";
 import axios from "axios";
 // import snacks from "../../assets/snacks.png"
@@ -23,9 +23,23 @@ const Products = () => {
     // };
     axios.post("http://localhost:8080/api/products").then((res) => {
       setmyData(res.data);
+
       // console.log(res.data);
     });
   }, []);
+
+  const deleteProduct = (id) => {
+    console.log("Deleted", id);
+
+    axios.delete(`http://localhost:8080/api/products/${id}`).then((res) => {
+      setTimeout(() => {
+        axios.post("http://localhost:8080/api/products").then((res) => {
+          setmyData(res.data);
+        });
+      }, 100);
+
+    });
+  };
 
   const FilterCategories = myData.map((item) => {
     if (item.category === "alacarte") {
@@ -48,7 +62,7 @@ const Products = () => {
       return (count5 = count5 + 1);
     }
   });
-  console.log(FilterCategories)
+  console.log(FilterCategories);
   // setCount(data)
 
   const icons = [
@@ -69,6 +83,7 @@ const Products = () => {
       order: "fa fa-list-alt icon",
     },
   ];
+  let i = 1;
 
   return (
     <>
@@ -104,6 +119,7 @@ const Products = () => {
           <table id="products">
             <thead>
               <tr>
+                <th>S/n</th>
                 <th>Image</th>
                 <th>Name</th>
                 <th>Price</th>
@@ -117,6 +133,7 @@ const Products = () => {
               return (
                 <tbody key={item._id}>
                   <tr>
+                    <td>{i++}</td>
                     <td>
                       <img src={item.imageUrl} alt="" />{" "}
                     </td>
@@ -124,7 +141,9 @@ const Products = () => {
                     <td>{item.price}</td>
                     <td>{item.category}</td>
                     <td>{item.desc}</td>
-                    <td className="deleteIconAdmin" >  <FaRegTrashAlt /> </td>
+                    <td className="deleteIconAdmin">
+                      <FaRegTrashAlt onClick={() => deleteProduct(item._id)} />
+                    </td>
                   </tr>
                 </tbody>
               );

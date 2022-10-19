@@ -19,11 +19,10 @@ const Orders = () => {
       })
       .then((res) => {
         setmyData(res.data);
-        console.log("the data are", res.data);
+        console.log("the data is", res.data);
       });
   }, [user]);
 
-  console.log("mydata", myData);
   const icons = [
     {
       completed: "fa fa-calendar-check-o icon ",
@@ -57,10 +56,10 @@ const Orders = () => {
                 number={myData.length}
                 icon={icons[4].order}
               />
-              <Card title="Active Orders" number="80" icon={icons[3].active} />
-              <Card title="Completed" number="120" icon={icons[0].completed} />
-              <Card title="Pending" number="80" icon={icons[2].pending} />
-              <Card title="Canceled" number="50" icon={icons[1].canceled} />
+              <Card title="Active Orders"    number={myData.length} icon={icons[3].active} />
+              <Card title="Completed" number="0" icon={icons[0].completed} />
+              <Card title="Pending"   number={myData.length} icon={icons[2].pending} />
+              <Card title="Canceled" number="0" icon={icons[1].canceled} />
             </div>
           </div>
           {/* table for products */}
@@ -68,7 +67,7 @@ const Orders = () => {
             <table id="products">
               <tr>
                 <th>Sr#</th>
-                <th>Id</th>
+                {/* <th>Id</th> */}
                 <th>Name</th>
                 <th>Email</th>
                 <th>Date</th>
@@ -82,20 +81,27 @@ const Orders = () => {
               {myData.map((item) => {
                 return (
                   <tbody key={item._id}>
-                    {/* <h3>{item._id}</h3> */}
-                    {item.cart.map((subItem) => {
+                    {item.cart.map((subItem, index) => {
                       return (
-                        <tr>
+                        <tr key={index}>
                           <td>{i++}</td>
-                          <td>{item._id}</td>
-                          <td>{user.name}</td>
-                          <td>{user.email}</td>
+                          {/* <td>{item._id}</td> */}
+                          <td>{item.user?.name}</td>
+                          <td>{item.user?.email}</td>
                           <td>{item.createdAt}</td>
                           <td>{subItem.name}</td>
                           <td>Rs:{subItem.price} </td>
                           <td>* {subItem.quantity}</td>
                           <td>Rs:{subItem.total}</td>
-                          <td>Pending</td>
+                          <td>
+                            <select id="action">
+                              <option value="Pending" className="pending">
+                                Pending
+                              </option>
+                              <option value="Completed">Completed</option>
+                              <option value="Cancelled">Cancelled</option>
+                            </select>
+                          </td>
                         </tr>
                       );
                     })}

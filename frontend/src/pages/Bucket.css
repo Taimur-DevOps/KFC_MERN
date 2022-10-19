@@ -235,3 +235,10 @@ margin-left: 10px;
 .UDicons:hover {
   transform: scale(1.4);
 }
+
+.priceNIcons{
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  width: 70px;
+}

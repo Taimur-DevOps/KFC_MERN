@@ -29,7 +29,7 @@ const TopSelling = (props) => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    setTimeout(() => myfunc(), 1500);
+    setTimeout(() => myfunc(), 500);
   }, []);
 
   const myfunc = () => {

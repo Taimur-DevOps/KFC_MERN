@@ -1,4 +1,6 @@
+import axios from "axios";
 import React from "react";
+import { Toaster, toast } from "react-hot-toast";
 import { useState } from "react";
 import MainContainer from "../../components/Admin/MainContainer";
 import SideNavbar from "../../components/Admin/SideNavbar";
@@ -8,15 +10,29 @@ const AddNewProduct = () => {
   const [name, setname] = useState("");
   const [price, setprice] = useState("");
   const [category, setcategory] = useState("");
-  const [image, setimage] = useState("");
+  const [imageUrl, setimageUrl] = useState("");
   const [desc, setdesc] = useState("");
 
-  const submitForm = (e) => {
+  const addProduct = (e) => {
    e.preventDefault();
    const product={
-    name,price,image,category,desc
+    name,price,imageUrl,category,desc
    }
    console.log(product)
+
+   axios.post("http://localhost:8080/api/products/add",{product})
+   .then(() => {
+    setname('')
+    setprice('');
+    setcategory('');
+    setimageUrl('');
+    setdesc('');
+
+    toast.success("Product Added ");
+
+  }).catch((error)=>alert(error.message));
+   
+
   };
 
   return (
@@ -28,7 +44,7 @@ const AddNewProduct = () => {
           <div className="addNewProductForm">
             {/* Form For Adding New Products */}
 
-            <form onSubmit={submitForm}>
+            <form onSubmit={addProduct}>
               <ul className="form-style-1">
                 <li>
                   <label>
@@ -115,8 +131,8 @@ const AddNewProduct = () => {
                   <input
                 type="text"
                 name="image"
-                value={image}
-                onChange={e=>setimage(e.target.value)}
+                value={imageUrl}
+                onChange={e=>setimageUrl(e.target.value)}
                 id="image"
                 className="field-long uploadBtn"
                 placeholder="Add Image Url"
@@ -141,6 +157,21 @@ const AddNewProduct = () => {
 
 
                 <li>
+                <Toaster
+              position="top-center"
+              reverseOrder={true}
+              toastOptions={{
+                className: "",
+                style: {
+                  borderRadius: "6px",
+                  padding: "15px 50px",
+                  color: "white",
+                  backgroundColor: "green ",
+                  marginTop: "55px",
+                  fontSize: "13px",
+                },
+              }}
+            />
                  <input type="submit" />
                 </li>
               </ul>
