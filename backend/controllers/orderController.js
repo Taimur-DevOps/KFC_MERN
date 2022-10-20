@@ -50,8 +50,23 @@ const getAllOrders = asyncHandler(async (req, res) => {
   }
 });
 
+
+const orderHistory = asyncHandler(async (req, res) => {
+  try {
+    const orders = await Orders.find().populate("user").sort({createdAt:1}).lean();
+    console.log("All Orders>>>: ", orders);
+
+    res.status(200).send(orders);
+  } catch (error) {
+    res.status(404).json({ message: error });
+  }
+});
+
+
+
 module.exports = {
   setOrders,
   getOrders,
   getAllOrders,
+  orderHistory
 };

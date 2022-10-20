@@ -72,11 +72,14 @@
 }
 .side-nav__link.active {
   color: var(--side-nav__link_active_clr);
-  background-color: var(--side-nav__link_active_bg-clr);
+  background-color: black;
 }
 .side-nav__link:hover:not(.active) {
   background-color: black;
 }
+
+
+
 .side-nav__close-btn {
   margin-bottom: 1em;
 }
@@ -190,6 +193,8 @@
   opacity: 0.7;
   box-sizing: border-box;
 }
+
+
 
 .orderStatusContainer {
   box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,

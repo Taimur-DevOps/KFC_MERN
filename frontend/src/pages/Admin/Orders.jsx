@@ -66,7 +66,7 @@ const Orders = () => {
           <div className="tableData">
             <table id="products">
               <tr>
-                <th>Sr#</th>
+                <th>S/n</th>
                 {/* <th>Id</th> */}
                 <th>Name</th>
                 <th>Email</th>
@@ -88,7 +88,7 @@ const Orders = () => {
                           {/* <td>{item._id}</td> */}
                           <td>{item.user?.name}</td>
                           <td>{item.user?.email}</td>
-                          <td>{item.createdAt}</td>
+                          <td>{item.createdAt.slice(0, 10)}</td>
                           <td>{subItem.name}</td>
                           <td>Rs:{subItem.price} </td>
                           <td>* {subItem.quantity}</td>
