@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Chart from "react-apexcharts";
 import { useSelector } from "react-redux";
+import moment from "moment";
 
 const WeeklyChart = () => {
   const { user } = useSelector((state) => state.auth);
@@ -11,14 +12,22 @@ const WeeklyChart = () => {
       id: "basic-bar",
     },
     xaxis: {
-      categories: [],
-      // categories: ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"]
+      // categories: [],
+      categories: [
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+        "Saturday",
+        "Sunday",
+      ],
     },
     fill: {
       colors: ["#e4002b"],
     },
     dataLabels: {
-      enabled: false,
+      enabled: true,
     },
   });
 
@@ -31,26 +40,33 @@ const WeeklyChart = () => {
 
   useEffect(() => {
     const day = [];
+
     const earnings = [];
-    let sum = 0;
+
+    // const newData = [];
 
     axios
       .get("http://localhost:8080/api/orders/orderHistory", {
         headers: { authorization: `Bearer ${user.token}` },
       })
       .then((response) => {
-        
-        response.data.map((item) => {
-          item.cart.map((data) => {
-            console.log("Total Amount >>", data.total);
+        response.data.forEach((item) => {
+          let total = 0;
 
-            earnings.push(data.total);  
-            sum=sum+data.total
-            console.log(sum)
-
+          item.cart.forEach((_item) => {
+            total += _item.total;
           });
-          day.push(item.createdAt.slice(7, 10));
+
+          day.unshift(moment(item.createdAt).format("dd"));
+
+          earnings.unshift(total);
+
+          // newData.unshift({
+          //   date: moment(item.createdAt).format("dddd"),
+          //   total: total,
+          // });
         });
+        console.log("CPI", day, earnings);
 
         setOption({
           chart: {

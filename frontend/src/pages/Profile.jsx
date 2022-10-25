@@ -4,6 +4,7 @@ import "./Profile.css";
 // import midnight from "../assets/midnight.png"
 import { useSelector } from "react-redux";
 import axios from "axios";
+import moment from "moment";
 
 const Profile = () => {
   const { user } = useSelector((state) => state.auth);
@@ -68,7 +69,7 @@ const Profile = () => {
                                     Total Price: {subItem.total}
                                   </h3>
                                   <span className="card__status">
-                                    Date: {item.createdAt}
+                                    Date: { moment(item.createdAt).format("DD-MM-YYYY")}
                                   </span>
                                 </div>
                               </div>

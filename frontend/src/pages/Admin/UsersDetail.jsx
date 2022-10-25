@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./Products.css";
 import MainContainer from "../../components/Admin/MainContainer";
 import SideNavbar from "../../components/Admin/SideNavbar";
-import { FaRegTrashAlt } from "react-icons/fa";
+import { FaTrash } from "react-icons/fa";
 import { useSelector } from "react-redux";
 import axios from "axios";
 
@@ -81,7 +81,7 @@ const UsersDetail = () => {
                       <td>{post.isAdmin.toString()}</td>
                       <td>{post.createdAt}</td>
                       <td className="deleteIconAdmin">
-                        <FaRegTrashAlt onClick={() => deleteUser(post._id)} />
+                        <FaTrash onClick={() => deleteUser(post._id)} />
                       </td>
                     </tr>
                   </tbody>

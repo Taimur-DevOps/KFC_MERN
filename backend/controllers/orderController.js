@@ -41,7 +41,10 @@ const getOrders = async (req, res) => {
 // fetching all the orders from all users
 const getAllOrders = asyncHandler(async (req, res) => {
   try {
-    const orders = await Orders.find().populate("user").sort({createdAt:-1}).lean();
+    const orders = await Orders.find()
+      .populate("user")
+      .sort({ createdAt: -1 })
+      .lean();
     console.log("All Orders>>>: ", orders);
 
     res.status(200).send(orders);
@@ -50,23 +53,33 @@ const getAllOrders = asyncHandler(async (req, res) => {
   }
 });
 
-
+// For Dashboard Records
 const orderHistory = asyncHandler(async (req, res) => {
   try {
-    const orders = await Orders.find().populate("user").sort({createdAt:1}).lean();
+    // const orders = await Orders.find().sort( { "createdAt": -1 } )
+    const orders = await Orders.aggregate([
+      {
+        $group: {
+          _id: {
+            date: { $dateToString: { format: "%Y-%m-%d", date: "$createdAt" } },
+        
+        },
+          data: {
+            $push: "$$ROOT",
+          },
+        },
+      },
+    ]);
     console.log("All Orders>>>: ", orders);
-
     res.status(200).send(orders);
   } catch (error) {
     res.status(404).json({ message: error });
   }
 });
-
-
 
 module.exports = {
   setOrders,
   getOrders,
   getAllOrders,
-  orderHistory
+  orderHistory,
 };

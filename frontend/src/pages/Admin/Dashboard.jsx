@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import MainContainer from "../../components/Admin/MainContainer";
 import SideNavbar from "../../components/Admin/SideNavbar";
 import Card from "../../components/Admin/Card";
@@ -7,14 +7,14 @@ import MonthlyChart from "../../components/Admin/MonthlyChart";
 import { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-
-
+import axios from "axios";
 
 const Dashboard = () => {
   const { user } = useSelector((state) => state.auth);
 
-  const navigate=useNavigate();
- 
+  const [myData, setmyData] = useState([]);
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     console.log("isadmin", user.isAdmin);
@@ -28,7 +28,18 @@ const Dashboard = () => {
     return () => {
       document.body.style.backgroundColor = prevCOlor;
     };
-  }, []);
+  });
+
+  useEffect(() => {
+    axios
+      .get("http://localhost:8080/api/orders/getAllOrders", {
+        headers: { authorization: `Bearer ${user.token}` },
+      })
+      .then((res) => {
+        setmyData(res.data);
+        console.log("the data is", res.data);
+      });
+  }, [user]);
 
   const icons = [
     {
@@ -54,13 +65,25 @@ const Dashboard = () => {
       <MainContainer>
         <h1 className="DashboardHeading ">Dashboard</h1>
         <div className="orderStatusContainer">
-          <h3 style={{ marginLeft: "25px", opacity: "0.6" }}>Order Status</h3>
+          <h3 style={{ marginLeft: "25px", opacity: "0.6" }}>Categories</h3>
           <div className="DashboardBody">
-            <Card title="Total Orders" number="250" icon={icons[4].order} />
-            <Card title="Active Orders" number="80" icon={icons[3].active} />
-            <Card title="Completed" number="120" icon={icons[0].completed} />
-            <Card title="Pending" number="80" icon={icons[2].pending} />
-            <Card title="Canceled" number="50" icon={icons[1].canceled} />
+            <Card
+              title="All Orders"
+              number={myData.length}
+              icon={icons[4].order}
+            />
+            <Card
+              title="Active Orders"
+              number={myData.length}
+              icon={icons[3].active}
+            />
+            <Card title="Completed" number="0" icon={icons[0].completed} />
+            <Card
+              title="Pending"
+              number={myData.length}
+              icon={icons[2].pending}
+            />
+            <Card title="Canceled" number="0" icon={icons[1].canceled} />
           </div>
         </div>
 

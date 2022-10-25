@@ -9,7 +9,7 @@ const {
 
 router.post("/", getProducts);
 router.post("/add", setProducts);
-router.put("/:id", updateProducts);
+router.put("/update/:id", updateProducts);
 router.delete("/:id", deleteProducts);
 
 module.exports = router;

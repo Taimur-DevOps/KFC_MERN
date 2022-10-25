@@ -20,7 +20,7 @@ const getProducts = async (req, res) => {
   }
 };
 
-// Adding new Product to Db
+// ------------Adding new Product to Db--------------------------
 const setProducts = async (req, res) => {
   try {
     const addProduct = req.body;
@@ -33,12 +33,30 @@ const setProducts = async (req, res) => {
   }
 };
 
-// Update the Exixting product in Db
-const updateProducts = (req, res) => {
-  res.status(200).json({ message: `your update id is ${req.params.id}` });
+//----------- Update the Exixting product in Db --------------------
+const updateProducts = async (req, res) => {
+  try {
+    const id = req.params.id;
+    console.log("the id issss>>>", id);
+
+    const product = await Products.findByIdAndUpdate(id, {
+      $set: {
+        name: req.body.name,
+        price: req.body.price,
+        category: req.body.category,
+        imageUrl: req.body.imageUrl,
+        desc: req.body.desc,
+      },
+    });
+    res.status(200).send(product);
+  } catch (error) {
+    res.status(400).json(error.message);
+    console.log(error);
+  }
+  // res.status(200).json({ message: `your update id is ${req.params.id}` });
 };
 
-// Deleteing Product from Db
+// ------------Deleteing Product from Db------------------
 const deleteProducts = async (req, res) => {
   // res.status(200).json({ message: `your delete id is ${req.params.id}` });
   const id = req.params.id;

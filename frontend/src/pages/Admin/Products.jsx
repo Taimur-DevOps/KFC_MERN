@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import MainContainer from "../../components/Admin/MainContainer";
 import SideNavbar from "../../components/Admin/SideNavbar";
 import Card from "../../components/Admin/Card";
-import { FaRegTrashAlt } from "react-icons/fa";
+import { FaTrash, FaEdit } from "react-icons/fa";
 import "./Products.css";
 import axios from "axios";
 // import snacks from "../../assets/snacks.png"
@@ -28,6 +28,7 @@ const Products = () => {
     });
   }, []);
 
+  // deleting a product from an api
   const deleteProduct = (id) => {
     console.log("Deleted", id);
 
@@ -37,7 +38,15 @@ const Products = () => {
           setmyData(res.data);
         });
       }, 100);
+    });
+  };
 
+  // Updating a single product from an api
+  const updateProduct = (id) => {
+    console.log("updated", id);
+
+    axios.put(`http://localhost:8080/api/products/update/${id}`).then((res) => {
+      console.log(" kjlkjlkj", res);
     });
   };
 
@@ -142,7 +151,14 @@ const Products = () => {
                     <td>{item.category}</td>
                     <td>{item.desc}</td>
                     <td className="deleteIconAdmin">
-                      <FaRegTrashAlt onClick={() => deleteProduct(item._id)} />
+                      <FaEdit
+                        className="deleteIconAdmin"
+                        onClick={() => updateProduct(item._id)}
+                      />
+                      <FaTrash
+                        className="deleteIconAdmin"
+                        onClick={() => deleteProduct(item._id)}
+                      />
                     </td>
                   </tr>
                 </tbody>
