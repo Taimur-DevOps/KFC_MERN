@@ -6,8 +6,8 @@ const asyncHandler = require("express-async-handler");
 //@access Private
 const setOrders = async (req, res) => {
   const { userid, item } = req.body;
-  console.log(req.body);
-  console.log("this is order controller");
+  // console.log(req.body);
+  // console.log("this is order controller");
 
   try {
     // console.log("the output is ", req.body.category);
@@ -16,7 +16,7 @@ const setOrders = async (req, res) => {
       cart: item,
     });
     Data.save();
-    console.log(Data);
+    // console.log(Data);
     res.status(200).json(Data);
   } catch (error) {
     res.status(400).json(error.message);
@@ -26,7 +26,7 @@ const setOrders = async (req, res) => {
 
 // single user order history
 const getOrders = async (req, res) => {
-  console.log(req.user._id);
+  // console.log(req.user._id);
   try {
     const Data = await Orders.find({ user: req.user._id })
       .sort({ createdAt: -1 })
@@ -45,7 +45,7 @@ const getAllOrders = asyncHandler(async (req, res) => {
       .populate("user")
       .sort({ createdAt: -1 })
       .lean();
-    console.log("All Orders>>>: ", orders);
+    // console.log("All Orders>>>: ", orders);
 
     res.status(200).send(orders);
   } catch (error) {
@@ -61,17 +61,32 @@ const orderHistory = asyncHandler(async (req, res) => {
       {
         $group: {
           _id: {
-            date: { $dateToString: { format: "%Y-%m-%d", date: "$createdAt" } },
-        
-        },
+            date: { $dateToString: { format: "%d-%m-%Y", date: "$createdAt" } },
+            // moment(item.createdAt).format("DD-MM-YYYY")
+          },
           data: {
-            $push: "$$ROOT",
+            $push: "$cart",
           },
         },
       },
     ]);
-    console.log("All Orders>>>: ", orders);
-    res.status(200).send(orders);
+    const date = [];
+    const totals = [];
+
+    orders.forEach((item) => {
+      date.push(item._id.date);
+      let total = 0;
+      const cartItems = item.data.flat();
+      cartItems.forEach((_item) => {
+        total += _item.total;
+      });
+      totals.push(total);
+    });
+    console.log("All Orders>>>sssss: ", date, totals);
+    res.status(200).send({
+      dates: date,
+      totals: totals,
+    });
   } catch (error) {
     res.status(404).json({ message: error });
   }

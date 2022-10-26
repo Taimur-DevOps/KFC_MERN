@@ -12,23 +12,26 @@ const WeeklyChart = () => {
       id: "basic-bar",
     },
     xaxis: {
-      // categories: [],
-      categories: [
-        "Monday",
-        "Tuesday",
-        "Wednesday",
-        "Thursday",
-        "Friday",
-        "Saturday",
-        "Sunday",
-      ],
+      categories: [],
+      // categories: [
+      //   "Monday",
+      //   "Tuesday",
+      //   "Wednesday",
+      //   "Thursday",
+      //   "Friday",
+      //   "Saturday",
+      //   "Sunday",
+      // ],
     },
     fill: {
       colors: ["#e4002b"],
     },
     dataLabels: {
-      enabled: true,
-    },
+      position: 'top',
+      maxItems: 7,
+
+     
+  }
   });
 
   const [series, setSeries] = useState([
@@ -50,37 +53,23 @@ const WeeklyChart = () => {
         headers: { authorization: `Bearer ${user.token}` },
       })
       .then((response) => {
-        response.data.forEach((item) => {
-          let total = 0;
-
-          item.cart.forEach((_item) => {
-            total += _item.total;
-          });
-
-          day.unshift(moment(item.createdAt).format("dd"));
-
-          earnings.unshift(total);
-
-          // newData.unshift({
-          //   date: moment(item.createdAt).format("dddd"),
-          //   total: total,
-          // });
-        });
-        console.log("CPI", day, earnings);
+        
+        // console.log("CPI", day, earnings);
+        console.log(response?.data)
 
         setOption({
           chart: {
             id: "apexchart-example",
           },
           xaxis: {
-            categories: day,
+            categories: response?.data?.dates,
           },
         });
 
         setSeries([
           {
             name: "series-1",
-            data: earnings,
+            data: response?.data?.totals,
           },
         ]);
         // console.log("Age n Salary ", day, earnings);

@@ -12,6 +12,9 @@ const Orders = () => {
 
   const [myData, setmyData] = useState([]);
   const { user } = useSelector((state) => state.auth);
+  const [deliver,setDeliver]=useState(false)
+
+
 
   useEffect(() => {
     axios
@@ -21,8 +24,6 @@ const Orders = () => {
       .then((res) => {
         setmyData(res.data);
         console.log("the Order data is", res.data);
-        
-        
       });
   }, [user]);
 
@@ -45,6 +46,10 @@ const Orders = () => {
     },
   ];
 
+  const deliverStatus=(id)=>{
+    console.log("deliver",id)
+    setDeliver(pre=>!pre)
+  }
   return (
     <>
       <SideNavbar />
@@ -81,17 +86,84 @@ const Orders = () => {
                 <th>Username</th>
                 <th>Email</th>
                 <th> Date</th>
-               
-                  <th style={{textAlign:"center"}} >Orders</th>
-
-                
-
+                <th style={{ textAlign: "center" }}>Orders</th>
                 <th>Total</th>
-                <th>Payment Type</th>
                 <th>Status</th>
               </tr>
 
-              {/* {myData.map((item,index) => {
+       
+
+              {myData.map((item, index) => {
+                return (
+                  <tbody key={item._id}>
+                    <tr key={index} className="tableRow">
+                      <td>{i++}</td>
+
+                      <td>{item.user?.name}</td>
+                      <td>{item.user?.email}</td>
+                      <td>{moment(item.createdAt).format("DD-MM-YYYY")}</td>
+
+                      {item.cart.map((subItem, index) => {
+                        return (
+                          <>
+                            <tr className="tableRow">
+                              <td className="SpecificRows">{subItem.name}</td>
+                              <td className="SpecificRows">
+                                {subItem.price} * {subItem.quantity}{" "}
+                              </td>
+                              <td className="SpecificRows">
+                                {" "}
+                                {subItem.price * subItem.quantity}Rs{" "}
+                              </td>
+                              {/* <td style={{border:"2px solid red",height:"20px" , width:"150px"}}> * {subItem.quantity}</td> */}
+                            </tr>
+                          </>
+                        );
+                      })}
+
+                      <td style={{ width: "100px" }}>Rs:{item.total}</td>
+ 
+                      <td>
+                        {/* <select id="action">
+                          <option value="Pending" className="pending"> Pending </option>
+                          <option value="Completed">Completed</option>
+                          <option value="Cancelled">Cancelled</option>
+                        </select> */}
+                        <button className={ deliver ?  " deliverGreenButton" : "deliverRedButton" } onClick={()=>deliverStatus(item._id)}> { deliver ? 'Delivered' : 'Deliver'}  </button>
+
+                      
+                      </td>
+                    </tr>
+                  </tbody>
+                );
+              })}
+            </table>
+          </div>
+        </div>
+      </MainContainer>
+    </>
+  );
+};
+
+export default Orders;
+
+
+
+
+
+
+
+
+
+
+
+
+
+<>
+
+
+
+       {/* {myData.map((item,index) => {
 
                 return (
                   <tbody key={item._id}>
@@ -123,52 +195,4 @@ const Orders = () => {
                 );
               })} */}
 
-              {myData.map((item, index) => {
-                return (
-                  <tbody key={item._id}>
-                    <tr key={index} className="tableRow">
-
-                      <td>{i++}</td>
-
-                      <td>{item.user?.name}</td>
-                      <td>{item.user?.email}</td>
-                      <td>{moment(item.createdAt).format("DD-MM-YYYY")}</td>
-
-                      {item.cart.map((subItem, index) => {
-                        return (
-                          <>
-                            <tr className="tableRow">
-                              <td className="SpecificRows">{subItem.name}</td>
-                              <td className="SpecificRows">{subItem.price} *  {subItem.quantity} </td>
-                              <td className="SpecificRows" > {subItem.price * subItem.quantity}Rs </td>
-                              {/* <td style={{border:"2px solid red",height:"20px" , width:"150px"}}> * {subItem.quantity}</td> */}
-                            </tr>
-
-                          </>
-                        );
-                      })}
-                      
-                      <td style={{ width: "100px" }}>Rs:{item.total}</td>
-                      <td>COD</td>
-                      <td>
-                        <select id="action">
-                          <option value="Pending" className="pending">
-                            Pending
-                          </option>
-                          <option value="Completed">Completed</option>
-                          <option value="Cancelled">Cancelled</option>
-                        </select>
-                      </td>
-                    </tr>
-                  </tbody>
-                );
-              })}
-            </table>
-          </div>
-        </div>
-      </MainContainer>
-    </>
-  );
-};
-
-export default Orders;
+</>

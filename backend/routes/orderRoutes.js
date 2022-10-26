@@ -15,6 +15,6 @@ router.get("/", protect, getOrders);
 
 router.get("/getAllOrders", getAllOrders);
 
-router.get("/orderHistory", getAllOrders);
+router.get("/orderHistory", orderHistory);
 
 module.exports = router;

@@ -364,3 +364,22 @@ select option:nth-child(2) {
 select option:nth-child(3) {
   color: red;
 }
+
+.deliverRedButton{
+  width: 100px;
+  border: none;
+  background-color: #e4002b;
+  padding: 10px;
+  color: white;
+  font-size: 12px;
+  cursor: pointer;
+}
+.deliverGreenButton{
+  width: 100px;
+  border: none;
+  background-color: #386a2d;
+  padding: 10px;
+  color: white;
+  font-size: 12px;
+  cursor: pointer;
+}
