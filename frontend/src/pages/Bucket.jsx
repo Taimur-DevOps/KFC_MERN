@@ -97,14 +97,14 @@ const Bucket = () => {
                       </div>
                       <div className="priceNIcons">
                         <h3>Rs {item.total}</h3>
-                        <h5>
-                          <span>
+                        <h3>
+                          {/* <span>
                             <i
                           className="fa fa-pencil UDicons"
                           aria-hidden="true"
                         ></i>
                             {""}
-                          </span>
+                          </span> */}
                           <span>
                             <i
                               className="fa fa-trash UDicons"
@@ -112,7 +112,7 @@ const Bucket = () => {
                               aria-hidden="true"
                             ></i>
                           </span>
-                        </h5>
+                        </h3>
                       </div>
                     </div>
                   </div>
