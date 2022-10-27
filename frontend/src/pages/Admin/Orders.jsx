@@ -5,25 +5,38 @@ import Card from "../../components/Admin/Card";
 import "./Products.css";
 import axios from "axios";
 import { useSelector } from "react-redux";
-import moment from "moment";
+// import moment from "moment";
+import Posts from "../../components/Admin/Posts";
+import PaginationBar from "../../components/Admin/PaginationBar";
+
 
 const Orders = () => {
-  let i = 1; //i for Sr# for table orders
+  let count = 1; //i for Sr# for table orders
+  const { user } = useSelector((state) => state.auth);
 
   const [myData, setmyData] = useState([]);
-  const { user } = useSelector((state) => state.auth);
-  const [deliver, setDeliver] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [postsPerPage] = useState(4);
 
   useEffect(() => {
+    setLoading(true);
     axios
       .get("http://localhost:8080/api/orders/getAllOrders", {
         headers: { authorization: `Bearer ${user.token}` },
       })
       .then((res) => {
         setmyData(res.data);
+        setLoading(false);
         console.log("the Order data is", res.data);
       });
   }, [user]);
+
+  const indexOfLastPost = currentPage * postsPerPage;
+  const indexOfFirstPost = indexOfLastPost - postsPerPage;
+  const currentPosts = myData.slice(indexOfFirstPost, indexOfLastPost);
+
+  const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
   const icons = [
     {
@@ -43,6 +56,7 @@ const Orders = () => {
       order: "fa fa-list-alt icon",
     },
   ];
+
   let totals = [];
   // const deliverStatus = (id) => {
   //   console.log("deliver", id)
@@ -90,52 +104,13 @@ const Orders = () => {
                 <th>Status</th>
               </tr>
 
-              {myData.map((item, index) => {
-                console.log("items", item);
-                return (
-                  <tbody key={item._id}>
-                    <tr key={index} className="tableRow" style={{backgroundColor:"#EEF1FF"}}>
-                      <td>{i++}</td>
-                      <td>{item.user?.name}</td>
-                      <td>{item.user?.email}</td>
-                      <td>{moment(item.createdAt).format("DD-MM-YYYY")}</td>
-                      {item.cart.map((subItem, index) => {
-                        return (
-                          <>
-                            <tr className="tableRow">
-                              <td className="SpecificRows">{subItem.name}</td>
-                              <td className="SpecificRows">
-                                {subItem.price} * {subItem.quantity}
-                              </td>
-                              <td className="SpecificRows">
-                                {subItem.price * subItem.quantity}Rs
-                              </td>
-                              {/* <td style={{border:"2px solid red",height:"20px" , width:"150px"}}> * {subItem.quantity}</td> */}
-                            </tr>
-                          </>
-                        );
-                      })}
-                   
-                      
-                      <td style={{ width: "100px" }}>
-                        Rs:{item.cart.reduce((total, cur) => total + cur.total, 0)}
-                      </td>
-
-                      <td>
-                        <select id="action">
-                          <option value="Pending" className="pending">
-                            Pending
-                          </option>
-                          <option value="Completed">Completed</option>
-                          <option value="Cancelled">Cancelled</option>
-                        </select>
-                        {/* <button className={ deliver ?  " deliverGreenButton" : "deliverRedButton" } onClick={()=>deliverStatus(item._id)}> { deliver ? 'Delivered' : 'Deliver'}  </button> */}
-                      </td>
-                    </tr>
-                  </tbody>
-                );
-              })}
+              <Posts myData={currentPosts} loading={loading} count={count} />
             </table>
+              <PaginationBar
+                postsPerPage={postsPerPage}
+                totalPosts={myData.length}
+                paginate={paginate}
+              />
           </div>
         </div>
       </MainContainer>
