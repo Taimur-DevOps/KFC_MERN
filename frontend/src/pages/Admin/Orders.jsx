@@ -9,7 +9,6 @@ import { useSelector } from "react-redux";
 import Posts from "../../components/Admin/Posts";
 import PaginationBar from "../../components/Admin/PaginationBar";
 
-
 const Orders = () => {
   let count = 1; //i for Sr# for table orders
   const { user } = useSelector((state) => state.auth);
@@ -106,11 +105,11 @@ const Orders = () => {
 
               <Posts myData={currentPosts} loading={loading} count={count} />
             </table>
-              <PaginationBar
-                postsPerPage={postsPerPage}
-                totalPosts={myData.length}
-                paginate={paginate}
-              />
+            <PaginationBar
+              postsPerPage={postsPerPage}
+              totalPosts={myData.length}
+              paginate={paginate}
+            />
           </div>
         </div>
       </MainContainer>

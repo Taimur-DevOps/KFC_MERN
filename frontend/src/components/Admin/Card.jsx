@@ -5,7 +5,7 @@ const Card = (props) => {
 
   return (
     <div>
-      <a href="/" className="data-card">
+      <div  className="data-card">
         <div className="cardItemsPlacement">
           <i style={{color:"red"}} className={props.icon} aria-hidden="true"></i>
           <span>
@@ -13,7 +13,7 @@ const Card = (props) => {
           </span>
         </div>
         <h4 className="status">{props.title}</h4>
-      </a>
+      </div>
     </div>
   );
 };

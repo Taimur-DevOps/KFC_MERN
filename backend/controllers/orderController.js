@@ -61,7 +61,7 @@ const orderHistory = asyncHandler(async (req, res) => {
       {
         $group: {
           _id: {
-            date: { $dateToString: { format: "%d-%m-%Y", date: "$createdAt" } },
+            date: { $dateToString: { format: "%d-%m", date: "$createdAt" } },
             // moment(item.createdAt).format("DD-MM-YYYY")
           },
           data: {

@@ -10,6 +10,8 @@ import axios from "axios";
 // import Rice from "../../assets/Rice.png"
 
 const Products = () => {
+  const [search, setSearch] = useState("");
+
   const [myData, setmyData] = useState([]);
   let [count, setCount] = useState(0);
   let [count2, setCount2] = useState(0);
@@ -125,6 +127,23 @@ const Products = () => {
         {/* table for products */}
         <div className="tableData">
           <h3 style={{ marginLeft: "20px", opacity: "0.6" }}>All Products</h3>
+          {/* ----------------Product Filter---------- */}
+          <form action="">
+            <i
+              className="fa fa-search icon iconAdjustment"
+              aria-hidden="true"
+            ></i>
+            <input
+              type="text"
+              id="myInput"
+              placeholder="Search for Categories.."
+              title="Type in a name"
+              onChange={(e) => setSearch(e.target.value)}
+              value={search}
+            ></input>
+          </form>
+
+          {/* -----------------Table Data -------------------- */}
           <table id="products">
             <thead>
               <tr>
@@ -138,32 +157,39 @@ const Products = () => {
               </tr>
             </thead>
 
-            {myData.map((item) => {
-              return (
-                <tbody key={item._id}>
-                  <tr>
-                    <td>{i++}</td>
-                    <td>
-                      <img src={item.imageUrl} alt="" />{" "}
-                    </td>
-                    <td>{item.name}</td>
-                    <td>{item.price}</td>
-                    <td>{item.category}</td>
-                    <td>{item.desc}</td>
-                    <td className="deleteIconAdmin">
-                      <FaEdit
-                        className="deleteIconAdmin"
-                        onClick={() => updateProduct(item._id)}
-                      />
-                      <FaTrash
-                        className="deleteIconAdmin"
-                        onClick={() => deleteProduct(item._id)}
-                      />
-                    </td>
-                  </tr>
-                </tbody>
-              );
-            })}
+            {myData
+              .filter((item) => {
+                return search.toLowerCase() === ""
+                  ? item
+                  : item.category.toLowerCase().includes(search) 
+                  || item.name.toLowerCase().includes(search);
+              })
+              .map((item) => {
+                return (
+                  <tbody key={item._id}>
+                    <tr>
+                      <td>{i++}</td>
+                      <td>
+                        <img src={item.imageUrl} alt="" />{" "}
+                      </td>
+                      <td>{item.name}</td>
+                      <td>{item.price}</td>
+                      <td>{item.category}</td>
+                      <td>{item.desc}</td>
+                      <td className="deleteIconAdmin">
+                        <FaEdit
+                          className="deleteIconAdmin"
+                          onClick={() => updateProduct(item._id)}
+                        />
+                        <FaTrash
+                          className="deleteIconAdmin"
+                          onClick={() => deleteProduct(item._id)}
+                        />
+                      </td>
+                    </tr>
+                  </tbody>
+                );
+              })}
           </table>
         </div>
       </MainContainer>
