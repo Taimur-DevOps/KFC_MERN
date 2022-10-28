@@ -69,7 +69,7 @@ const UsersDetail = () => {
               <thead>
                 <tr>
                   <th>S/n</th>
-                  <th>User ID</th>
+                  {/* <th>User ID</th> */}
                   <th>Name</th>
                   <th>Email</th>
                   <th>User Type</th>
@@ -89,7 +89,7 @@ const UsersDetail = () => {
                     <tbody key={post._id}>
                       <tr>
                         <td>{i++}</td>
-                        <td>{post._id}</td>
+                        {/* <td>{post._id}</td> */}
                         <td>{post.name[0]}</td>
                         <td>{post.email}</td>
                         <td>{post.isAdmin.toString()}</td>
